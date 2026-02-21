@@ -137,3 +137,38 @@
   gap: 1rem;
   margin-top: 1.5rem;
 }
+
+.transformControls {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.transformControls h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.controlGroup {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.controlGroup label {
+  text-align: right;
+  font-size: 0.9rem;
+}
+
+.controlGroup input[type="range"] {
+  flex-grow: 1;
+  cursor: pointer;
+}

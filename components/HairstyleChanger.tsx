@@ -16,6 +16,12 @@ export default function HairstyleChanger() {
   const [finalImage, setFinalImage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [stream, setStream] = useState<MediaStream | null>(null);
+  const [hairstyleTransform, setHairstyleTransform] = useState({
+    scale: 1,
+    rotate: 0,
+    x: 0,
+    y: 0,
+  });
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -82,7 +88,21 @@ export default function HairstyleChanger() {
     setSelectedHairstyle(null);
     setFinalImage(null);
     setIsLoading(false);
+    setHairstyleTransform({ scale: 1, rotate: 0, x: 0, y: 0 });
     startCamera();
+  };
+
+  const handleHairstyleSelect = (hairstyle: string) => {
+    setSelectedHairstyle(hairstyle);
+    setHairstyleTransform({ scale: 1, rotate: 0, x: 0, y: 0 });
+  };
+
+  const handleTransformChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setHairstyleTransform(prev => ({
+      ...prev,
+      [name]: parseFloat(value),
+    }));
   };
 
   const applyHairstyle = () => {
@@ -115,7 +135,12 @@ export default function HairstyleChanger() {
             <div className={styles.imagePreviewContainer}>
               <Image src={finalImage} alt="Результат" width={640} height={480} className={styles.userImage} />
               {selectedHairstyle && (
-                <div className={styles.hairstyleOverlay}>
+                <div 
+                  className={styles.hairstyleOverlay}
+                  style={{
+                    transform: `translateX(${hairstyleTransform.x}%) translateY(${hairstyleTransform.y}%) rotate(${hairstyleTransform.rotate}deg) scale(${hairstyleTransform.scale})`,
+                  }}
+                >
                   <Image src={selectedHairstyle} alt="Выбранная прическа" layout="fill" objectFit="contain" />
                 </div>
               )}
@@ -124,7 +149,12 @@ export default function HairstyleChanger() {
             <div className={styles.imagePreviewContainer}>
               <Image src={userImage} alt="Ваше фото" width={640} height={480} className={styles.userImage} />
               {selectedHairstyle && (
-                <div className={styles.hairstyleOverlay}>
+                <div 
+                  className={styles.hairstyleOverlay}
+                  style={{
+                    transform: `translateX(${hairstyleTransform.x}%) translateY(${hairstyleTransform.y}%) rotate(${hairstyleTransform.rotate}deg) scale(${hairstyleTransform.scale})`,
+                  }}
+                >
                    <Image src={selectedHairstyle} alt="Выбранная прическа" layout="fill" objectFit="contain" />
                 </div>
               )}
@@ -174,11 +204,32 @@ export default function HairstyleChanger() {
           <h2>Выберите прическу</h2>
           <div className={styles.hairstyleGrid}>
             {hairstyles.map((hairstyle, index) => (
-              <div key={index} className={styles.hairstyleItem} onClick={() => setSelectedHairstyle(hairstyle)}>
+              <div key={index} className={styles.hairstyleItem} onClick={() => handleHairstyleSelect(hairstyle)}>
                 <Image src={hairstyle} alt={`Прическа ${index + 1}`} width={100} height={100} />
               </div>
             ))}
           </div>
+          {selectedHairstyle && (
+            <div className={styles.transformControls}>
+              <h4>Настроить прическу</h4>
+              <div className={styles.controlGroup}>
+                <label>Размер:</label>
+                <input type="range" name="scale" min="0.5" max="2" step="0.05" value={hairstyleTransform.scale} onChange={handleTransformChange} />
+              </div>
+              <div className={styles.controlGroup}>
+                <label>Поворот:</label>
+                <input type="range" name="rotate" min="-45" max="45" step="1" value={hairstyleTransform.rotate} onChange={handleTransformChange} />
+              </div>
+              <div className={styles.controlGroup}>
+                <label>По горизонтали:</label>
+                <input type="range" name="x" min="-50" max="50" step="1" value={hairstyleTransform.x} onChange={handleTransformChange} />
+              </div>
+              <div className={styles.controlGroup}>
+                <label>По вертикали:</label>
+                <input type="range" name="y" min="-50" max="50" step="1" value={hairstyleTransform.y} onChange={handleTransformChange} />
+              </div>
+            </div>
+          )}
           <div className={styles.hairstyleActions}>
             <button onClick={() => setSelectedHairstyle(null)} className={styles.buttonClear}>
                 Убрать прическу
