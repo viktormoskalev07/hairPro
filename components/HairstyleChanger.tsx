@@ -13,6 +13,8 @@ const hairstyles = [
 export default function HairstyleChanger() {
   const [userImage, setUserImage] = useState<string | null>(null);
   const [selectedHairstyle, setSelectedHairstyle] = useState<string | null>(null);
+  const [finalImage, setFinalImage] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [stream, setStream] = useState<MediaStream | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -78,7 +80,22 @@ export default function HairstyleChanger() {
   const reset = () => {
     setUserImage(null);
     setSelectedHairstyle(null);
+    setFinalImage(null);
+    setIsLoading(false);
     startCamera();
+  };
+
+  const applyHairstyle = () => {
+    if (!userImage || !selectedHairstyle) return;
+    setIsLoading(true);
+    // Simulate API call to process the image
+    setTimeout(() => {
+      // In a real app, you'd get a new image URL from the backend.
+      // Here, we'll just use the user's image to represent the final result.
+      // The selected hairstyle will still be overlaid.
+      setFinalImage(userImage);
+      setIsLoading(false);
+    }, 2000);
   };
 
   useEffect(() => {
@@ -94,12 +111,26 @@ export default function HairstyleChanger() {
       <h1 className={styles.title}>Примерка причесок</h1>
       <div className={styles.mainContent}>
         <div className={styles.cameraContainer}>
-          {userImage ? (
+          {finalImage ? (
+            <div className={styles.imagePreviewContainer}>
+              <Image src={finalImage} alt="Результат" width={640} height={480} className={styles.userImage} />
+              {selectedHairstyle && (
+                <div className={styles.hairstyleOverlay}>
+                  <Image src={selectedHairstyle} alt="Выбранная прическа" layout="fill" objectFit="contain" />
+                </div>
+              )}
+            </div>
+          ) : userImage ? (
             <div className={styles.imagePreviewContainer}>
               <Image src={userImage} alt="Ваше фото" width={640} height={480} className={styles.userImage} />
               {selectedHairstyle && (
                 <div className={styles.hairstyleOverlay}>
                    <Image src={selectedHairstyle} alt="Выбранная прическа" layout="fill" objectFit="contain" />
+                </div>
+              )}
+              {isLoading && (
+                <div className={styles.loadingOverlay}>
+                  <span>Обработка...</span>
                 </div>
               )}
             </div>
@@ -110,7 +141,11 @@ export default function HairstyleChanger() {
         </div>
         
         <div className={styles.controls}>
-          {!userImage ? (
+          {finalImage ? (
+            <button onClick={reset} className={styles.button}>
+              Начать заново
+            </button>
+          ) : !userImage ? (
             <>
               <button onClick={takePhoto} className={styles.button} disabled={!stream}>
                 Сделать фото
@@ -134,7 +169,7 @@ export default function HairstyleChanger() {
         </div>
       </div>
       
-      {userImage && (
+      {userImage && !finalImage && (
         <div className={styles.hairstyleSelector}>
           <h2>Выберите прическу</h2>
           <div className={styles.hairstyleGrid}>
@@ -144,9 +179,14 @@ export default function HairstyleChanger() {
               </div>
             ))}
           </div>
-           <button onClick={() => setSelectedHairstyle(null)} className={styles.buttonClear}>
-              Убрать прическу
+          <div className={styles.hairstyleActions}>
+            <button onClick={() => setSelectedHairstyle(null)} className={styles.buttonClear}>
+                Убрать прическу
             </button>
+            <button onClick={applyHairstyle} className={styles.button} disabled={!selectedHairstyle || isLoading}>
+              {isLoading ? 'Обработка...' : 'Применить прическу'}
+            </button>
+          </div>
         </div>
       )}
     </div>
