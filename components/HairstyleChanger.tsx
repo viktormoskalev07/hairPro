@@ -16,6 +16,7 @@ export default function HairstyleChanger() {
   const [stream, setStream] = useState<MediaStream | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const startCamera = async () => {
     try {
@@ -44,6 +45,24 @@ export default function HairstyleChanger() {
         stopCamera();
       }
     }
+  };
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (e.target?.result) {
+          setUserImage(e.target.result as string);
+          stopCamera();
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const triggerFileUpload = () => {
+    fileInputRef.current?.click();
   };
 
   const stopCamera = () => {
@@ -92,9 +111,21 @@ export default function HairstyleChanger() {
         
         <div className={styles.controls}>
           {!userImage ? (
-            <button onClick={takePhoto} className={styles.button} disabled={!stream}>
-              Сделать фото
-            </button>
+            <>
+              <button onClick={takePhoto} className={styles.button} disabled={!stream}>
+                Сделать фото
+              </button>
+              <button onClick={triggerFileUpload} className={styles.button}>
+                Загрузить фото
+              </button>
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handleImageUpload}
+                style={{ display: 'none' }}
+                accept="image/*"
+              />
+            </>
           ) : (
             <button onClick={reset} className={styles.button}>
               Переделать фото
