@@ -118,6 +118,64 @@ export default function HairstyleChanger() {
     }, 2000);
   };
 
+  const handleDownload = () => {
+    if (!finalImage || !selectedHairstyle) return;
+
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const userImg = new window.Image();
+    userImg.crossOrigin = 'Anonymous';
+    userImg.src = finalImage;
+
+    userImg.onload = () => {
+      // Set canvas dimensions to match the displayed image
+      const displayWidth = 640;
+      const displayHeight = 480;
+      canvas.width = displayWidth;
+      canvas.height = displayHeight;
+
+      // Draw the user image, fitting it to the canvas
+      ctx.drawImage(userImg, 0, 0, displayWidth, displayHeight);
+
+      const hairstyleImg = new window.Image();
+      hairstyleImg.crossOrigin = 'Anonymous';
+      hairstyleImg.src = selectedHairstyle;
+
+      hairstyleImg.onload = () => {
+        // Calculate dimensions for 'object-fit: contain'
+        const imgAspectRatio = hairstyleImg.naturalWidth / hairstyleImg.naturalHeight;
+        const canvasAspectRatio = canvas.width / canvas.height;
+        let renderWidth, renderHeight;
+
+        if (imgAspectRatio > canvasAspectRatio) {
+          renderWidth = canvas.width;
+          renderHeight = canvas.width / imgAspectRatio;
+        } else {
+          renderHeight = canvas.height;
+          renderWidth = canvas.height * imgAspectRatio;
+        }
+
+        ctx.save();
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        ctx.translate(centerX, centerY);
+        ctx.translate((canvas.width * hairstyleTransform.x) / 100, (canvas.height * hairstyleTransform.y) / 100);
+        ctx.rotate((hairstyleTransform.rotate * Math.PI) / 180);
+        ctx.scale(hairstyleTransform.scale, hairstyleTransform.scale);
+        
+        ctx.drawImage(hairstyleImg, -renderWidth / 2, -renderHeight / 2, renderWidth, renderHeight);
+        ctx.restore();
+
+        const link = document.createElement('a');
+        link.download = 'hairstyle-makeover.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      };
+    };
+  };
+
   useEffect(() => {
     startCamera();
     return () => {
@@ -172,9 +230,14 @@ export default function HairstyleChanger() {
         
         <div className={styles.controls}>
           {finalImage ? (
-            <button onClick={reset} className={styles.button}>
-              Начать заново
-            </button>
+            <div className={styles.finalActions}>
+              <button onClick={reset} className={styles.button}>
+                Начать заново
+              </button>
+              <button onClick={handleDownload} className={styles.button}>
+                Скачать результат
+              </button>
+            </div>
           ) : !userImage ? (
             <>
               <button onClick={takePhoto} className={styles.button} disabled={!stream}>
@@ -204,7 +267,11 @@ export default function HairstyleChanger() {
           <h2>Выберите прическу</h2>
           <div className={styles.hairstyleGrid}>
             {hairstyles.map((hairstyle, index) => (
-              <div key={index} className={styles.hairstyleItem} onClick={() => handleHairstyleSelect(hairstyle)}>
+              <div 
+                key={index} 
+                className={`${styles.hairstyleItem} ${selectedHairstyle === hairstyle ? styles.hairstyleItemSelected : ''}`} 
+                onClick={() => handleHairstyleSelect(hairstyle)}
+              >
                 <Image src={hairstyle} alt={`Прическа ${index + 1}`} width={100} height={100} />
               </div>
             ))}

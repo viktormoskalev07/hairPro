@@ -116,6 +116,11 @@
   border-color: #0070f3;
 }
 
+.hairstyleItemSelected {
+  border-color: #0070f3;
+  border-width: 3px;
+}
+
 .loadingOverlay {
   position: absolute;
   top: 0;
@@ -171,4 +176,9 @@
 .controlGroup input[type="range"] {
   flex-grow: 1;
   cursor: pointer;
+}
+
+.finalActions {
+  display: flex;
+  gap: 1rem;
 }
