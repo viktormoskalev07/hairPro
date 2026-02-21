@@ -8,6 +8,12 @@ const hairstyles = [
   '/hairstyles/hairstyle1.png',
   '/hairstyles/hairstyle2.png',
   '/hairstyles/hairstyle3.png',
+  '/hairstyles/hairstyle4.png',
+  '/hairstyles/hairstyle5.png',
+  '/hairstyles/hairstyle6.png',
+  '/hairstyles/hairstyle7.png',
+  '/hairstyles/hairstyle8.png',
+  '/hairstyles/hairstyle9.png',
 ];
 
 export default function HairstyleChanger() {

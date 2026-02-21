@@ -96,10 +96,9 @@
 }
 
 .hairstyleGrid {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
   gap: 1rem;
-  flex-wrap: wrap;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
