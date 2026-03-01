@@ -26,6 +26,10 @@ export default function WigEditor() {
   const [faceDetected, setFaceDetected] = useState(false);
   const [cameraReady, setCameraReady] = useState(false);
 
+  const [aiPrompt, setAiPrompt] = useState('');
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiResult, setAiResult] = useState<string | null>(null);
+
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -226,6 +230,90 @@ export default function WigEditor() {
       window.removeEventListener('touchend', handleMouseUp);
     };
   }, [isDragging, isResizing, handleMouseMove, handleMouseUp]);
+
+  // Сжимает dataURL до указанного размера в байтах через canvas
+  const compressImage = (dataUrl: string, maxBytes = 4 * 1024 * 1024): Promise<string> =>
+    new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const MAX_DIM = 1920;
+        let { width, height } = img;
+        if (width > MAX_DIM || height > MAX_DIM) {
+          const ratio = Math.min(MAX_DIM / width, MAX_DIM / height);
+          width = Math.round(width * ratio);
+          height = Math.round(height * ratio);
+        }
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext('2d')!.drawImage(img, 0, 0, width, height);
+
+        let quality = 0.92;
+        const tryEncode = () => {
+          const result = canvas.toDataURL('image/jpeg', quality);
+          const bytes = Math.round((result.length * 3) / 4);
+          if (bytes <= maxBytes || quality <= 0.3) {
+            resolve(result);
+          } else {
+            quality -= 0.08;
+            tryEncode();
+          }
+        };
+        tryEncode();
+      };
+      img.src = dataUrl;
+    });
+
+  // Загружает изображение по src и возвращает base64 без префикса data:...
+  const fetchImageBase64 = (src: string): Promise<string> =>
+    new Promise((resolve, reject) => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        canvas.getContext('2d')!.drawImage(img, 0, 0);
+        const dataUrl = canvas.toDataURL('image/png');
+        resolve(dataUrl.split(',')[1]);
+      };
+      img.onerror = reject;
+      img.src = src;
+    });
+
+  const handleAiImprove = async () => {
+    if (!userImage) return;
+    setAiLoading(true);
+    setAiResult(null);
+    try {
+      // Сжимаем фото до < 4 МБ
+      const compressed = await compressImage(userImage);
+      const photoBase64 = compressed.split(',')[1];
+
+      // Загружаем парик если выбран
+      let wigBase64: string | null = null;
+      if (selectedWig) {
+        try { wigBase64 = await fetchImageBase64(selectedWig.src); } catch {}
+      }
+
+      const res = await fetch('/api/ai-improve', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ photoBase64, wigBase64, customPrompt: aiPrompt }),
+      });
+
+      const data = await res.json();
+      if (data.imageBase64) {
+        setAiResult(`data:${data.mimeType ?? 'image/jpeg'};base64,${data.imageBase64}`);
+      } else {
+        alert(`Ошибка AI: ${data.error ?? 'Нет изображения в ответе'}`);
+      }
+    } catch (e) {
+      alert(`Ошибка: ${e}`);
+    } finally {
+      setAiLoading(false);
+    }
+  };
 
   const handleExport = () => {
     if (!userImage || !containerRef.current) return;
@@ -447,6 +535,80 @@ export default function WigEditor() {
                     />
                   </div>
                 </div>
+              </div>
+            )}
+
+            {/* ── AI Улучшение ── */}
+            {userImage && (
+              <div className="bg-neutral-800/80 backdrop-blur border border-neutral-700 p-5 rounded-3xl shadow-xl flex flex-col gap-4">
+                <div className="flex items-center gap-2">
+                  <svg className="w-5 h-5 text-violet-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                  </svg>
+                  <span className="font-bold text-white">AI Улучшение</span>
+                  <span className="text-xs text-violet-400 bg-violet-500/10 border border-violet-500/20 px-2 py-0.5 rounded-full ml-1">Gemini</span>
+                </div>
+
+                <textarea
+                  value={aiPrompt}
+                  onChange={e => setAiPrompt(e.target.value)}
+                  placeholder={selectedWig
+                    ? `Оставь пустым — AI сам применит причёску «${selectedWig.name}». Или напиши что изменить дополнительно...`
+                    : 'Опиши что сделать с фото: поменять причёску, цвет волос, стиль... Или выбери парик из галереи справа.'}
+                  rows={3}
+                  className="w-full px-4 py-3 bg-neutral-700/50 border border-neutral-600 rounded-2xl text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-violet-500 transition-colors resize-none"
+                />
+
+                <div className="flex gap-3 items-start">
+                  <button
+                    onClick={handleAiImprove}
+                    disabled={aiLoading}
+                    className="flex-1 px-5 py-3.5 bg-violet-600 hover:bg-violet-500 disabled:bg-neutral-700 disabled:cursor-not-allowed text-white font-bold rounded-2xl shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2"
+                  >
+                    {aiLoading ? (
+                      <>
+                        <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/></svg>
+                        Генерирую...
+                      </>
+                    ) : (
+                      <>
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                        </svg>
+                        Улучшить с AI
+                      </>
+                    )}
+                  </button>
+                  {aiResult && (
+                    <a
+                      href={aiResult}
+                      download="ai-hairstyle.jpg"
+                      className="px-5 py-3.5 bg-neutral-700 hover:bg-neutral-600 text-white font-semibold rounded-2xl transition-all active:scale-95 flex items-center justify-center gap-2 shrink-0"
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                      Скачать
+                    </a>
+                  )}
+                </div>
+
+                {/* Результат AI */}
+                {aiResult && (
+                  <div className="flex flex-col gap-2">
+                    <p className="text-xs text-neutral-500 font-medium">Результат AI:</p>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={aiResult}
+                      alt="AI результат"
+                      className="w-full rounded-2xl border border-violet-500/30 shadow-lg"
+                    />
+                    <button
+                      onClick={() => { setUserImage(aiResult); setAiResult(null); }}
+                      className="w-full px-4 py-2.5 bg-violet-600/20 hover:bg-violet-600/30 border border-violet-500/30 text-violet-300 text-sm font-semibold rounded-xl transition-all"
+                    >
+                      Использовать как основное фото
+                    </button>
+                  </div>
+                )}
               </div>
             )}
           </div>
