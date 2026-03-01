@@ -1,23 +1,19 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import Footer from "../components/Footer";
+import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Примерка причесок",
-  description: "Примерьте новые прически с помощью вашей веб-камеры",
+  title: 'Wig Editor',
+  description: 'Try on different wigs instantly in your browser!',
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="ru">
-      <body style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', margin: 0 }}>
-        <main style={{ flex: '1' }}>{children}</main>
-        <Footer />
-      </body>
+    <html lang="en">
+      <body>{children}</body>
     </html>
   );
 }

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <radialGradient id="afro-grad" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" style="stop-color:#3a3a3a;stop-opacity:1"/>
+      <stop offset="70%" style="stop-color:#1a1a1a;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#000;stop-opacity:1"/>
+    </radialGradient>
+    <filter id="afro-texture">
+      <feTurbulence type="turbulence" baseFrequency="0.9" numOctaves="4" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <ellipse cx="100" cy="90" rx="78" ry="75" fill="url(#afro-grad)" filter="url(#afro-texture)"/>
+  <ellipse cx="65" cy="75" rx="25" ry="28" fill="#111" filter="url(#afro-texture)"/>
+  <ellipse cx="135" cy="75" rx="25" ry="28" fill="#111" filter="url(#afro-texture)"/>
+  <ellipse cx="100" cy="55" rx="22" ry="26" fill="#222" filter="url(#afro-texture)"/>
+  <ellipse cx="100" cy="90" rx="72" ry="68" fill="none" stroke="#0a0a0a" stroke-width="3" filter="url(#afro-texture)"/>
+</svg>
