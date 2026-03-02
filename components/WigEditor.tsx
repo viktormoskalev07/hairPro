@@ -16,16 +16,16 @@ const AVAILABLE_WIGS: Wig[] = wigsData;
 
 const ALL_CATEGORIES: Category[] = [
   { id: 'all',                label: 'Все' },
+  { id: 'men-classic',        label: 'Мужские · Классика' },
+  { id: 'men-fade',           label: 'Мужские · Фейды' },
+  { id: 'men-textured',       label: 'Мужские · Текстурные' },
+  { id: 'men-long',           label: 'Мужские · Длинные' },
   { id: 'women-classic',      label: 'Женские · Классика' },
   { id: 'women-long',         label: 'Женские · Длинные' },
   { id: 'women-curly',        label: 'Женские · Кудри' },
   { id: 'women-short',        label: 'Женские · Короткие' },
   { id: 'women-updo',         label: 'Женские · Updo' },
   { id: 'women-colored',      label: 'Женские · Цветные' },
-  { id: 'men-classic',        label: 'Мужские · Классика' },
-  { id: 'men-fade',           label: 'Мужские · Фейды' },
-  { id: 'men-textured',       label: 'Мужские · Текстурные' },
-  { id: 'men-long',           label: 'Мужские · Длинные' },
   { id: 'unisex-natural',     label: 'Унисекс · Натуральные' },
   { id: 'unisex-alternative', label: 'Унисекс · Альтернатива' },
 ];
