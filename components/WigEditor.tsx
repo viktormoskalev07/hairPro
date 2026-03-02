@@ -7,15 +7,39 @@ type Wig = {
   id: string;
   src: string;
   name: string;
+  category?: string;
 };
 
+type Category = { id: string; label: string };
+
 const AVAILABLE_WIGS: Wig[] = wigsData;
+
+const ALL_CATEGORIES: Category[] = [
+  { id: 'all',                label: 'Все' },
+  { id: 'women-classic',      label: 'Женские · Классика' },
+  { id: 'women-long',         label: 'Женские · Длинные' },
+  { id: 'women-curly',        label: 'Женские · Кудри' },
+  { id: 'women-short',        label: 'Женские · Короткие' },
+  { id: 'women-updo',         label: 'Женские · Updo' },
+  { id: 'women-colored',      label: 'Женские · Цветные' },
+  { id: 'men-classic',        label: 'Мужские · Классика' },
+  { id: 'men-fade',           label: 'Мужские · Фейды' },
+  { id: 'men-textured',       label: 'Мужские · Текстурные' },
+  { id: 'men-long',           label: 'Мужские · Длинные' },
+  { id: 'unisex-natural',     label: 'Унисекс · Натуральные' },
+  { id: 'unisex-alternative', label: 'Унисекс · Альтернатива' },
+];
+
+// Only show categories that actually have wigs
+const usedCatIds = new Set(AVAILABLE_WIGS.map(w => w.category));
+const CATEGORIES = ALL_CATEGORIES.filter(c => c.id === 'all' || usedCatIds.has(c.id));
 
 export default function WigEditor() {
   const [userImage, setUserImage] = useState<string | null>(null);
   const [stream, setStream] = useState<MediaStream | null>(null);
   const [selectedWig, setSelectedWig] = useState<Wig | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
   
   const [wigTransform, setWigTransform] = useState({ x: 0, y: 0, scale: 1, rotate: 0 });
   const [isDragging, setIsDragging] = useState(false);
@@ -619,8 +643,23 @@ export default function WigEditor() {
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-bold">Коллекция причёсок</h3>
                 <span className="text-xs font-semibold px-2 py-1 bg-indigo-500/20 text-indigo-300 rounded-full">
-                  {AVAILABLE_WIGS.filter(w => w.name.toLowerCase().includes(searchQuery.toLowerCase())).length} стилей
+                  {AVAILABLE_WIGS.filter(w =>
+                    (selectedCategory === 'all' || w.category === selectedCategory) &&
+                    w.name.toLowerCase().includes(searchQuery.toLowerCase())
+                  ).length} стилей
                 </span>
+              </div>
+
+              <div className="flex flex-wrap gap-1.5">
+                {CATEGORIES.map(cat => (
+                  <button
+                    key={cat.id}
+                    onClick={() => setSelectedCategory(cat.id)}
+                    className={`px-2.5 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-wider transition-all ${selectedCategory === cat.id ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/20' : 'bg-neutral-700/50 text-neutral-400 hover:text-neutral-200 hover:bg-neutral-700'}`}
+                  >
+                    {cat.label}
+                  </button>
+                ))}
               </div>
 
               <div className="relative">
@@ -636,8 +675,13 @@ export default function WigEditor() {
                 />
               </div>
 
-              <div className="grid grid-cols-3 gap-2.5 overflow-y-auto pr-1 custom-scrollbar" style={{ maxHeight: 'calc(100vh - 260px)' }}>
-                {AVAILABLE_WIGS.filter(w => w.name.toLowerCase().includes(searchQuery.toLowerCase())).map((wig) => (
+              <div className="grid grid-cols-3 gap-2.5 overflow-y-auto pr-1 custom-scrollbar" style={{ maxHeight: 'calc(100vh - 340px)' }}>
+                {AVAILABLE_WIGS
+                  .filter(w =>
+                    (selectedCategory === 'all' || w.category === selectedCategory) &&
+                    w.name.toLowerCase().includes(searchQuery.toLowerCase())
+                  )
+                  .map((wig) => (
                   <button
                     key={wig.id}
                     title={wig.name}

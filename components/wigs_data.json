@@ -1,247 +1,548 @@
 [
   {
+    "id": "pixie-cut",
+    "src": "/wigs_categorized/pixie_cut.png",
+    "name": "Pixie Cut",
+    "category": "women-short"
+  },
+  {
+    "id": "long-layers",
+    "src": "/wigs_categorized/long_layers.png",
+    "name": "Long Layers",
+    "category": "women-long"
+  },
+  {
+    "id": "sassoon-cut",
+    "src": "/wigs_categorized/sassoon_cut.png",
+    "name": "Sassoon Cut",
+    "category": "women-classic"
+  },
+  {
+    "id": "classic-side-part",
+    "src": "/wigs_categorized/classic_side_part.png",
+    "name": "Classic Side Part",
+    "category": "women-classic"
+  },
+  {
+    "id": "crew-cut",
+    "src": "/wigs_categorized/crew_cut.png",
+    "name": "Crew Cut",
+    "category": "men-classic"
+  },
+  {
+    "id": "wolf-cut",
+    "src": "/wigs_categorized/wolf_cut.png",
+    "name": "Wolf Cut",
+    "category": "men-textured"
+  },
+  {
+    "id": "mullet",
+    "src": "/wigs_categorized/mullet.png",
+    "name": "Mullet",
+    "category": "women-classic"
+  },
+  {
+    "id": "curtain-bangs",
+    "src": "/wigs_categorized/curtain_bangs.png",
+    "name": "Curtain Bangs",
+    "category": "women-long"
+  },
+  {
+    "id": "classic-afro",
+    "src": "/wigs_categorized/classic_afro.png",
+    "name": "Classic Afro",
+    "category": "women-classic"
+  },
+  {
+    "id": "dreadlocks",
+    "src": "/wigs_categorized/dreadlocks.png",
+    "name": "Dreadlocks",
+    "category": "unisex-natural"
+  },
+  {
+    "id": "deep-wave",
+    "src": "/wigs_categorized/deep_wave.png",
+    "name": "Deep Wave",
+    "category": "women-curly"
+  },
+  {
+    "id": "neon-shag",
+    "src": "/wigs_categorized/neon_shag.png",
+    "name": "Neon Shag",
+    "category": "women-colored"
+  },
+  {
+    "id": "geometric-pink",
+    "src": "/wigs_categorized/geometric_pink.png",
+    "name": "Geometric Pink",
+    "category": "women-colored"
+  },
+  {
     "id": "real-wig-1",
     "src": "/wigs_real/real-wig-1.webp",
-    "name": "Long Wavy Blonde"
+    "name": "Long Wavy Blonde",
+    "category": "women-long"
   },
   {
     "id": "real-wig-3",
     "src": "/wigs_real/real-wig-3.webp",
-    "name": "Slicked Back Brown"
+    "name": "Slicked Back Brown",
+    "category": "men-classic"
   },
   {
     "id": "real-wig-6",
     "src": "/wigs_real/real-wig-6.webp",
-    "name": "Long Straight Brown"
+    "name": "Long Straight Brown",
+    "category": "women-classic"
   },
   {
     "id": "real-wig-8",
     "src": "/wigs_real/real-wig-8.webp",
-    "name": "Messy Bun"
+    "name": "Messy Bun",
+    "category": "women-updo"
   },
   {
     "id": "real-wig-12",
     "src": "/wigs_real/real-wig-12.png",
-    "name": "Viking Braids"
+    "name": "Viking Braids",
+    "category": "women-updo"
   },
   {
     "id": "real-wig-18",
     "src": "/wigs_real/real-wig-18.png",
-    "name": "Rose Gold Long"
-  },
-  {
-    "id": "real-wig-20",
-    "src": "/wigs_real/real-wig-20.png",
-    "name": "Rainbow Buzz"
+    "name": "Rose Gold Long",
+    "category": "women-long"
   },
   {
     "id": "extra-wig-1",
     "src": "/wigs_real/real_wig_1afd5a6b.png",
-    "name": "Copper Balayage"
+    "name": "Copper Balayage",
+    "category": "women-long"
   },
   {
     "id": "extra-wig-2",
     "src": "/wigs_real/real_wig_21c531f5.png",
-    "name": "Sleek High Ponytail"
-  },
-  {
-    "id": "extra-wig-4",
-    "src": "/wigs_real/real_wig_3d3696c3.png",
-    "name": "Honey Highlights"
+    "name": "Sleek High Ponytail",
+    "category": "women-classic"
   },
   {
     "id": "extra-wig-5",
     "src": "/wigs_real/real_wig_4506d834.png",
-    "name": "French Bob"
+    "name": "French Bob",
+    "category": "women-classic"
   },
   {
     "id": "extra-wig-6",
     "src": "/wigs_real/real_wig_5c188252.png",
-    "name": "Braided Crown"
+    "name": "Braided Crown",
+    "category": "women-updo"
   },
   {
     "id": "extra-wig-7",
     "src": "/wigs_real/real_wig_625dc49f.png",
-    "name": "Platinum Lob"
+    "name": "Platinum Lob",
+    "category": "women-classic"
   },
   {
     "id": "extra-wig-8",
     "src": "/wigs_real/real_wig_6839adc8.png",
-    "name": "Tousled Layers"
+    "name": "Tousled Layers",
+    "category": "women-long"
   },
   {
     "id": "extra-wig-9",
     "src": "/wigs_real/real_wig_6f64aa7f.png",
-    "name": "Burgundy Cascade"
+    "name": "Burgundy Cascade",
+    "category": "women-long"
   },
   {
     "id": "extra-wig-10",
     "src": "/wigs_real/real_wig_7a8eee9d.png",
-    "name": "Sandy Beach Waves"
+    "name": "Sandy Beach Waves",
+    "category": "women-classic"
   },
   {
     "id": "extra-wig-11",
     "src": "/wigs_real/real_wig_8a10124b.png",
-    "name": "Classic Updo"
+    "name": "Classic Updo",
+    "category": "women-classic"
   },
   {
     "id": "extra-wig-12",
     "src": "/wigs_real/real_wig_8d2213c8.png",
-    "name": "Jet Black Curtains"
+    "name": "Jet Black Curtains",
+    "category": "women-classic"
   },
   {
     "id": "extra-wig-13",
     "src": "/wigs_real/real_wig_8e68406e.png",
-    "name": "Auburn Shag"
+    "name": "Auburn Shag",
+    "category": "men-textured"
   },
   {
     "id": "extra-wig-15",
     "src": "/wigs_real/real_wig_a36a35d6.png",
-    "name": "Blunt Fringe"
+    "name": "Blunt Fringe",
+    "category": "women-classic"
   },
   {
     "id": "extra-wig-16",
     "src": "/wigs_real/real_wig_a4624103.png",
-    "name": "Chestnut Pixie"
+    "name": "Chestnut Pixie",
+    "category": "women-short"
   },
   {
     "id": "extra-wig-17",
     "src": "/wigs_real/real_wig_a75559a7.png",
-    "name": "Ice Blonde Straight"
+    "name": "Ice Blonde Straight",
+    "category": "women-classic"
   },
   {
     "id": "extra-wig-18",
     "src": "/wigs_real/real_wig_a89959ac.png",
-    "name": "Dusty Lavender Bob"
+    "name": "Dusty Lavender Bob",
+    "category": "women-classic"
   },
   {
     "id": "extra-wig-20",
     "src": "/wigs_real/real_wig_ad8945e9.png",
-    "name": "Cinnamon Curls"
+    "name": "Cinnamon Curls",
+    "category": "women-curly"
   },
   {
     "id": "extra-wig-21",
     "src": "/wigs_real/real_wig_d86cf9a5.png",
-    "name": "Ocean Blue Ombre"
+    "name": "Ocean Blue Ombre",
+    "category": "women-long"
   },
   {
     "id": "extra-wig-22",
     "src": "/wigs_real/real_wig_e840b0ec.png",
-    "name": "Forest Green Braids"
+    "name": "Forest Green Braids",
+    "category": "women-updo"
   },
   {
     "id": "extra-wig-23",
     "src": "/wigs_real/real_wig_f1c972a2.png",
-    "name": "Strawberry Blonde"
+    "name": "Strawberry Blonde",
+    "category": "women-colored"
   },
   {
     "id": "extra-wig-24",
     "src": "/wigs_real/real_wig_fcb6b477.png",
-    "name": "Peach Fuzz Lob"
+    "name": "Peach Fuzz Lob",
+    "category": "women-classic"
   },
   {
     "id": "extra-wig-25",
     "src": "/wigs_real/real_wig_feb267b6.png",
-    "name": "Midnight Dreadlocks"
+    "name": "Midnight Dreadlocks",
+    "category": "unisex-natural"
   },
   {
     "id": "gen-wig-30",
     "src": "/wigs_real/gen-wig-30.png",
-    "name": "Natural Black Straight"
+    "name": "Natural Black Straight",
+    "category": "women-classic"
   },
   {
     "id": "gen-wig-31",
     "src": "/wigs_real/gen-wig-31.png",
-    "name": "Auburn Wavy Bob"
+    "name": "Auburn Wavy Bob",
+    "category": "women-classic"
   },
   {
     "id": "gen-wig-32",
     "src": "/wigs_real/gen-wig-32.png",
-    "name": "Platinum Blonde Pixie"
+    "name": "Platinum Blonde Pixie",
+    "category": "women-short"
   },
   {
     "id": "gen-wig-33",
     "src": "/wigs_real/gen-wig-33.png",
-    "name": "Chestnut Curly Long"
+    "name": "Chestnut Curly Long",
+    "category": "women-long"
   },
   {
     "id": "gen-wig-34",
     "src": "/wigs_real/gen-wig-34.png",
-    "name": "Ash Grey Bob"
+    "name": "Ash Grey Bob",
+    "category": "women-classic"
   },
   {
     "id": "gen-wig-35",
     "src": "/wigs_real/gen-wig-35.png",
-    "name": "Honey Blonde Layers"
-  },
-  {
-    "id": "gen-wig-36",
-    "src": "/wigs_real/gen-wig-36.png",
-    "name": "Jet Black Undercut"
+    "name": "Honey Blonde Layers",
+    "category": "women-long"
   },
   {
     "id": "gen-wig-37",
     "src": "/wigs_real/gen-wig-37.png",
-    "name": "Copper Red Waves"
-  },
-  {
-    "id": "gen-wig-38",
-    "src": "/wigs_real/gen-wig-38.png",
-    "name": "Dark Brown Pompadour"
+    "name": "Copper Red Waves",
+    "category": "women-classic"
   },
   {
     "id": "gen-wig-39",
     "src": "/wigs_real/gen-wig-39.png",
-    "name": "Lavender Lob"
-  },
-  {
-    "id": "gen-wig-40",
-    "src": "/wigs_real/gen-wig-40.png",
-    "name": "Bleached Textured Crop"
+    "name": "Lavender Lob",
+    "category": "women-classic"
   },
   {
     "id": "gen-wig-41",
     "src": "/wigs_real/gen-wig-41.png",
-    "name": "Dark Chocolate Braid"
+    "name": "Dark Chocolate Braid",
+    "category": "women-updo"
   },
   {
     "id": "gen-wig-42",
     "src": "/wigs_real/gen-wig-42.png",
-    "name": "Rose Gold Curtain Bangs"
+    "name": "Rose Gold Curtain Bangs",
+    "category": "women-long"
   },
   {
     "id": "gen-wig-43",
     "src": "/wigs_real/gen-wig-43.png",
-    "name": "Salt and Pepper Quiff"
+    "name": "Salt and Pepper Quiff",
+    "category": "men-classic"
   },
   {
     "id": "gen-wig-44",
     "src": "/wigs_real/gen-wig-44.png",
-    "name": "Teal Blue Shag"
+    "name": "Teal Blue Shag",
+    "category": "women-colored"
   },
   {
     "id": "gen-wig-45",
     "src": "/wigs_real/gen-wig-45.png",
-    "name": "Caramel Balayage Long"
+    "name": "Caramel Balayage Long",
+    "category": "women-long"
   },
   {
     "id": "gen-wig-46",
     "src": "/wigs_real/gen-wig-46.png",
-    "name": "Burgundy Wolf Cut"
+    "name": "Burgundy Wolf Cut",
+    "category": "women-colored"
   },
   {
     "id": "gen-wig-47",
     "src": "/wigs_real/gen-wig-47.png",
-    "name": "Blonde Beach Waves"
+    "name": "Blonde Beach Waves",
+    "category": "women-classic"
   },
   {
     "id": "gen-wig-48",
     "src": "/wigs_real/gen-wig-48.png",
-    "name": "Navy Blue Mohawk"
+    "name": "Navy Blue Mohawk",
+    "category": "women-colored"
   },
   {
     "id": "gen-wig-49",
     "src": "/wigs_real/gen-wig-49.png",
-    "name": "Classic Black Afro"
+    "name": "Classic Black Afro",
+    "category": "women-classic"
+  },
+  {
+    "id": "cat-wig-50",
+    "src": "/wigs_real/cat-wig-50.png",
+    "name": "Classic A-Line Bob",
+    "category": "women-classic"
+  },
+  {
+    "id": "cat-wig-51",
+    "src": "/wigs_real/cat-wig-51.png",
+    "name": "Sleek Lob",
+    "category": "women-classic"
+  },
+  {
+    "id": "cat-wig-52",
+    "src": "/wigs_real/cat-wig-52.png",
+    "name": "Blunt Cut Bob",
+    "category": "women-classic"
+  },
+  {
+    "id": "cat-wig-53",
+    "src": "/wigs_real/cat-wig-53.png",
+    "name": "French Crop Bob",
+    "category": "women-classic"
+  },
+  {
+    "id": "cat-wig-54",
+    "src": "/wigs_real/cat-wig-54.png",
+    "name": "Italian Bob",
+    "category": "women-classic"
+  },
+  {
+    "id": "cat-wig-55",
+    "src": "/wigs_real/cat-wig-55.png",
+    "name": "Cascading Layers",
+    "category": "women-long"
+  },
+  {
+    "id": "cat-wig-56",
+    "src": "/wigs_real/cat-wig-56.png",
+    "name": "Mermaid Waves",
+    "category": "women-long"
+  },
+  {
+    "id": "cat-wig-57",
+    "src": "/wigs_real/cat-wig-57.png",
+    "name": "Straight Silk",
+    "category": "women-long"
+  },
+  {
+    "id": "cat-wig-58",
+    "src": "/wigs_real/cat-wig-58.png",
+    "name": "Balayage Curtains",
+    "category": "women-long"
+  },
+  {
+    "id": "cat-wig-59",
+    "src": "/wigs_real/cat-wig-59.png",
+    "name": "Tight Ringlets",
+    "category": "women-curly"
+  },
+  {
+    "id": "cat-wig-60",
+    "src": "/wigs_real/cat-wig-60.png",
+    "name": "Loose Beach Curls",
+    "category": "women-curly"
+  },
+  {
+    "id": "cat-wig-61",
+    "src": "/wigs_real/cat-wig-61.png",
+    "name": "Coily Natural",
+    "category": "women-curly"
+  },
+  {
+    "id": "cat-wig-62",
+    "src": "/wigs_real/cat-wig-62.png",
+    "name": "Romantic Waves",
+    "category": "women-curly"
+  },
+  {
+    "id": "cat-wig-63",
+    "src": "/wigs_real/cat-wig-63.png",
+    "name": "Textured Pixie",
+    "category": "women-short"
+  },
+  {
+    "id": "cat-wig-64",
+    "src": "/wigs_real/cat-wig-64.png",
+    "name": "Sleek Pixie",
+    "category": "women-short"
+  },
+  {
+    "id": "cat-wig-66",
+    "src": "/wigs_real/cat-wig-66.png",
+    "name": "Mushroom Cut",
+    "category": "women-short"
+  },
+  {
+    "id": "cat-wig-67",
+    "src": "/wigs_real/cat-wig-67.png",
+    "name": "French Twist",
+    "category": "women-updo"
+  },
+  {
+    "id": "cat-wig-68",
+    "src": "/wigs_real/cat-wig-68.png",
+    "name": "Low Chignon",
+    "category": "women-updo"
+  },
+  {
+    "id": "cat-wig-69",
+    "src": "/wigs_real/cat-wig-69.png",
+    "name": "Fishtail Braid",
+    "category": "women-updo"
+  },
+  {
+    "id": "cat-wig-70",
+    "src": "/wigs_real/cat-wig-70.png",
+    "name": "Dutch Crown Braid",
+    "category": "women-updo"
+  },
+  {
+    "id": "cat-wig-71",
+    "src": "/wigs_real/cat-wig-71.png",
+    "name": "Cotton Candy Pink",
+    "category": "women-colored"
+  },
+  {
+    "id": "cat-wig-72",
+    "src": "/wigs_real/cat-wig-72.png",
+    "name": "Sapphire Blue Bob",
+    "category": "women-colored"
+  },
+  {
+    "id": "cat-wig-73",
+    "src": "/wigs_real/cat-wig-73.png",
+    "name": "Purple Haze Long",
+    "category": "women-colored"
+  },
+  {
+    "id": "cat-wig-74",
+    "src": "/wigs_real/cat-wig-74.png",
+    "name": "Sunset Ombre",
+    "category": "women-colored"
+  },
+  {
+    "id": "cat-wig-84",
+    "src": "/wigs_real/cat-wig-84.png",
+    "name": "Wolf Cut Men",
+    "category": "men-textured"
+  },
+  {
+    "id": "cat-wig-87",
+    "src": "/wigs_real/cat-wig-87.png",
+    "name": "Wavy Surfer Hair",
+    "category": "men-textured"
+  },
+  {
+    "id": "cat-wig-89",
+    "src": "/wigs_real/cat-wig-89.png",
+    "name": "Long Flowing Men",
+    "category": "men-long"
+  },
+  {
+    "id": "cat-wig-90",
+    "src": "/wigs_real/cat-wig-90.png",
+    "name": "Half Up Man Bun",
+    "category": "men-long"
+  },
+  {
+    "id": "cat-wig-91",
+    "src": "/wigs_real/cat-wig-91.png",
+    "name": "Norse Braid",
+    "category": "men-long"
+  },
+  {
+    "id": "cat-wig-92",
+    "src": "/wigs_real/cat-wig-92.png",
+    "name": "Big Afro",
+    "category": "unisex-natural"
+  },
+  {
+    "id": "cat-wig-93",
+    "src": "/wigs_real/cat-wig-93.png",
+    "name": "Freeform Locs",
+    "category": "unisex-natural"
+  },
+  {
+    "id": "cat-wig-94",
+    "src": "/wigs_real/cat-wig-94.png",
+    "name": "Twist Out",
+    "category": "unisex-natural"
+  },
+  {
+    "id": "cat-wig-96",
+    "src": "/wigs_real/cat-wig-96.png",
+    "name": "Geometric Color Block",
+    "category": "unisex-alternative"
+  },
+  {
+    "id": "cat-wig-97",
+    "src": "/wigs_real/cat-wig-97.png",
+    "name": "Neon Buzz Cut",
+    "category": "unisex-alternative"
   }
 ]
