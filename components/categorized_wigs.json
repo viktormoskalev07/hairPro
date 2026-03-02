@@ -1,0 +1,130 @@
+[
+  {
+    "category": "Women's Classics",
+    "name": "Classic Bob",
+    "src": "/wigs_categorized/classic_bob.png",
+    "path": "public/wigs_categorized\\classic_bob.png",
+    "ok": false,
+    "reason": "The image shows a neck and clothing (a black collar/jacket) in addition to the hair, violating the criterion that only hair (or a very subtle head shape) should be visible."
+  },
+  {
+    "category": "Women's Classics",
+    "name": "Pixie Cut",
+    "src": "/wigs_categorized/pixie_cut.png",
+    "path": "public/wigs_categorized\\pixie_cut.png",
+    "ok": true,
+    "reason": "The image displays only hair with no human face, watermarks, or text. The background is clean white, and the hairstyle is clearly recognizable as a pixie cut."
+  },
+  {
+    "category": "Women's Classics",
+    "name": "Long Layers",
+    "src": "/wigs_categorized/long_layers.png",
+    "path": "public/wigs_categorized\\long_layers.png",
+    "ok": true,
+    "reason": "The image displays only hair on a subtle, faceless head shape, with no human facial features, watermarks, or text. The background is clean white. The hairstyle is clearly recognizable as long layers due to its length and the distinct layering visible throughout."
+  },
+  {
+    "category": "Women's Classics",
+    "name": "Sassoon Cut",
+    "src": "/wigs_categorized/sassoon_cut.png",
+    "path": "public/wigs_categorized\\sassoon_cut.png",
+    "ok": true,
+    "reason": "The image shows only hair with no face, watermarks, or text. The background is clean white. The hairstyle, with its precise, geometric lines, blunt fringe, and sharp angles, is clearly recognizable as a Sassoon-inspired cut, particularly a variation of the bob or bowl cut."
+  },
+  {
+    "category": "Men's Classics",
+    "name": "Classic Side Part",
+    "src": "/wigs_categorized/classic_side_part.png",
+    "path": "public/wigs_categorized\\classic_side_part.png",
+    "ok": true,
+    "reason": "The image displays only hair, with no human facial features, watermarks, or text. The background is clean white, and the hairstyle is clearly recognizable as a Classic Side Part."
+  },
+  {
+    "category": "Men's Classics",
+    "name": "Crew Cut",
+    "src": "/wigs_categorized/crew_cut.png",
+    "path": "public/wigs_categorized\\crew_cut.png",
+    "ok": false,
+    "reason": "The image shows more than just hair or a very subtle head shape; distinct ears and a significant portion of the neck skin are visible, which goes against the criterion 'Only hair is visible (or hair on a very subtle head shape if needed, but preferably just hair)'."
+  },
+  {
+    "category": "Men's Classics",
+    "name": "Executive Contour",
+    "src": "/wigs_categorized/executive_contour.png",
+    "path": "public/wigs_categorized\\executive_contour.png",
+    "ok": false,
+    "reason": "The image includes a visible ear, which is not 'just hair' or a 'very subtle head shape' as preferred for a virtual try-on app element. The intention is for the element to be primarily hair only."
+  },
+  {
+    "category": "Modern & Creative",
+    "name": "Wolf Cut",
+    "src": "/wigs_categorized/wolf_cut.png",
+    "path": "public/wigs_categorized\\wolf_cut.png",
+    "ok": true,
+    "reason": "The image displays only hair, with a transparent cutout for the face, fulfilling the 'no human faces' and 'only hair visible' criteria. There are no watermarks or text. The background is effectively transparent (as shown by the crops on black, and rendered on white in the original). The hairstyle is clearly a layered, shaggy, and voluminous cut with feathered ends, which is characteristic of a 'Wolf Cut'."
+  },
+  {
+    "category": "Modern & Creative",
+    "name": "Mullet",
+    "src": "/wigs_categorized/mullet.png",
+    "path": "public/wigs_categorized\\mullet.png",
+    "ok": true,
+    "reason": "The image clearly shows only hair, with no human faces, watermarks, or text. The background is clean white. The hairstyle, with its shorter top/front and longer back/sides, is clearly recognizable as a mullet."
+  },
+  {
+    "category": "Modern & Creative",
+    "name": "High Fade",
+    "src": "/wigs_categorized/high_fade.png",
+    "path": "public/wigs_categorized\\high_fade.png",
+    "ok": false,
+    "reason": "The image includes a visible ear and part of the neck, which is beyond 'only hair' or a 'very subtle head shape' as required."
+  },
+  {
+    "category": "Modern & Creative",
+    "name": "Curtain Bangs",
+    "src": "/wigs_categorized/curtain_bangs.png",
+    "path": "public/wigs_categorized\\curtain_bangs.png",
+    "ok": true,
+    "reason": "N/A"
+  },
+  {
+    "category": "Textured",
+    "name": "Classic Afro",
+    "src": "/wigs_categorized/classic_afro.png",
+    "path": "public/wigs_categorized\\classic_afro.png",
+    "ok": true,
+    "reason": "N/A"
+  },
+  {
+    "category": "Textured",
+    "name": "Dreadlocks",
+    "src": "/wigs_categorized/dreadlocks.png",
+    "path": "public/wigs_categorized\\dreadlocks.png",
+    "ok": true,
+    "reason": "The image displays only dreadlocks on a subtle head shape, with no human facial features, watermarks, or text. The background is clean white, and the hairstyle is clearly recognizable as dreadlocks."
+  },
+  {
+    "category": "Textured",
+    "name": "Deep Wave",
+    "src": "/wigs_categorized/deep_wave.png",
+    "path": "public/wigs_categorized\\deep_wave.png",
+    "ok": true,
+    "reason": "Audit error: Server disconnected without sending a response."
+  },
+  {
+    "category": "Avant-Garde",
+    "name": "Neon Shag",
+    "src": "/wigs_categorized/neon_shag.png",
+    "path": "public/wigs_categorized\\neon_shag.png",
+    "ok": true,
+    "reason": "Audit error: [Errno 11001] getaddrinfo failed"
+  },
+  {
+    "category": "Avant-Garde",
+    "name": "Geometric Pink",
+    "src": "/wigs_categorized/geometric_pink.png",
+    "path": "public/wigs_categorized\\geometric_pink.png",
+    "ok": true,
+    "reason": "Audit error: [Errno 11001] getaddrinfo failed"
+  }
+]

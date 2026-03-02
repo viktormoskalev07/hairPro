@@ -1,0 +1,142 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wig Generation Test Page</title>
+        <style>
+            body { font-family: sans-serif; background: #f0f0f0; padding: 20px; }
+            .container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+            .card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); width: 250px; padding: 10px; }
+            .card img { width: 100%; height: 250px; object-fit: contain; background: #eee; border-radius: 4px; }
+            .card.fail { border: 2px solid #ff4d4d; }
+            .card.pass { border: 2px solid #4dff4d; }
+            .badge { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 12px; font-weight: bold; margin-bottom: 5px; }
+            .badge.pass { background: #d4edda; color: #155724; }
+            .badge.fail { background: #f8d7da; color: #721c24; }
+            h1 { text-align: center; }
+            h2 { width: 100%; border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 40px; }
+            .reason { font-size: 12px; color: #666; margin-top: 5px; }
+        </style>
+    </head>
+    <body>
+        <h1>Wig Generation Results</h1>
+        <div class="container">
+    <h2>Women's Classics</h2>
+        <div class="card fail">
+            <span class="badge fail">FAILED</span>
+            <img src="./wigs_categorized/classic_bob.png" alt="Classic Bob">
+            <strong>Classic Bob</strong>
+            <div class="reason">The image shows a neck and clothing (a black collar/jacket) in addition to the hair, violating the criterion that only hair (or a very subtle head shape) should be visible.</div>
+        </div>
+        
+        <div class="card pass">
+            <span class="badge pass">PASSED</span>
+            <img src="./wigs_categorized/pixie_cut.png" alt="Pixie Cut">
+            <strong>Pixie Cut</strong>
+            <div class="reason">The image displays only hair with no human face, watermarks, or text. The background is clean white, and the hairstyle is clearly recognizable as a pixie cut.</div>
+        </div>
+        
+        <div class="card pass">
+            <span class="badge pass">PASSED</span>
+            <img src="./wigs_categorized/long_layers.png" alt="Long Layers">
+            <strong>Long Layers</strong>
+            <div class="reason">The image displays only hair on a subtle, faceless head shape, with no human facial features, watermarks, or text. The background is clean white. The hairstyle is clearly recognizable as long layers due to its length and the distinct layering visible throughout.</div>
+        </div>
+        
+        <div class="card pass">
+            <span class="badge pass">PASSED</span>
+            <img src="./wigs_categorized/sassoon_cut.png" alt="Sassoon Cut">
+            <strong>Sassoon Cut</strong>
+            <div class="reason">The image shows only hair with no face, watermarks, or text. The background is clean white. The hairstyle, with its precise, geometric lines, blunt fringe, and sharp angles, is clearly recognizable as a Sassoon-inspired cut, particularly a variation of the bob or bowl cut.</div>
+        </div>
+        <h2>Men's Classics</h2>
+        <div class="card pass">
+            <span class="badge pass">PASSED</span>
+            <img src="./wigs_categorized/classic_side_part.png" alt="Classic Side Part">
+            <strong>Classic Side Part</strong>
+            <div class="reason">The image displays only hair, with no human facial features, watermarks, or text. The background is clean white, and the hairstyle is clearly recognizable as a Classic Side Part.</div>
+        </div>
+        
+        <div class="card fail">
+            <span class="badge fail">FAILED</span>
+            <img src="./wigs_categorized/crew_cut.png" alt="Crew Cut">
+            <strong>Crew Cut</strong>
+            <div class="reason">The image shows more than just hair or a very subtle head shape; distinct ears and a significant portion of the neck skin are visible, which goes against the criterion 'Only hair is visible (or hair on a very subtle head shape if needed, but preferably just hair)'.</div>
+        </div>
+        
+        <div class="card fail">
+            <span class="badge fail">FAILED</span>
+            <img src="./wigs_categorized/executive_contour.png" alt="Executive Contour">
+            <strong>Executive Contour</strong>
+            <div class="reason">The image includes a visible ear, which is not 'just hair' or a 'very subtle head shape' as preferred for a virtual try-on app element. The intention is for the element to be primarily hair only.</div>
+        </div>
+        <h2>Modern & Creative</h2>
+        <div class="card pass">
+            <span class="badge pass">PASSED</span>
+            <img src="./wigs_categorized/wolf_cut.png" alt="Wolf Cut">
+            <strong>Wolf Cut</strong>
+            <div class="reason">The image displays only hair, with a transparent cutout for the face, fulfilling the 'no human faces' and 'only hair visible' criteria. There are no watermarks or text. The background is effectively transparent (as shown by the crops on black, and rendered on white in the original). The hairstyle is clearly a layered, shaggy, and voluminous cut with feathered ends, which is characteristic of a 'Wolf Cut'.</div>
+        </div>
+        
+        <div class="card pass">
+            <span class="badge pass">PASSED</span>
+            <img src="./wigs_categorized/mullet.png" alt="Mullet">
+            <strong>Mullet</strong>
+            <div class="reason">The image clearly shows only hair, with no human faces, watermarks, or text. The background is clean white. The hairstyle, with its shorter top/front and longer back/sides, is clearly recognizable as a mullet.</div>
+        </div>
+        
+        <div class="card fail">
+            <span class="badge fail">FAILED</span>
+            <img src="./wigs_categorized/high_fade.png" alt="High Fade">
+            <strong>High Fade</strong>
+            <div class="reason">The image includes a visible ear and part of the neck, which is beyond 'only hair' or a 'very subtle head shape' as required.</div>
+        </div>
+        
+        <div class="card pass">
+            <span class="badge pass">PASSED</span>
+            <img src="./wigs_categorized/curtain_bangs.png" alt="Curtain Bangs">
+            <strong>Curtain Bangs</strong>
+            <div class="reason">N/A</div>
+        </div>
+        <h2>Textured</h2>
+        <div class="card pass">
+            <span class="badge pass">PASSED</span>
+            <img src="./wigs_categorized/classic_afro.png" alt="Classic Afro">
+            <strong>Classic Afro</strong>
+            <div class="reason">N/A</div>
+        </div>
+        
+        <div class="card pass">
+            <span class="badge pass">PASSED</span>
+            <img src="./wigs_categorized/dreadlocks.png" alt="Dreadlocks">
+            <strong>Dreadlocks</strong>
+            <div class="reason">The image displays only dreadlocks on a subtle head shape, with no human facial features, watermarks, or text. The background is clean white, and the hairstyle is clearly recognizable as dreadlocks.</div>
+        </div>
+        
+        <div class="card pass">
+            <span class="badge pass">PASSED</span>
+            <img src="./wigs_categorized/deep_wave.png" alt="Deep Wave">
+            <strong>Deep Wave</strong>
+            <div class="reason">Audit error: Server disconnected without sending a response.</div>
+        </div>
+        <h2>Avant-Garde</h2>
+        <div class="card pass">
+            <span class="badge pass">PASSED</span>
+            <img src="./wigs_categorized/neon_shag.png" alt="Neon Shag">
+            <strong>Neon Shag</strong>
+            <div class="reason">Audit error: [Errno 11001] getaddrinfo failed</div>
+        </div>
+        
+        <div class="card pass">
+            <span class="badge pass">PASSED</span>
+            <img src="./wigs_categorized/geometric_pink.png" alt="Geometric Pink">
+            <strong>Geometric Pink</strong>
+            <div class="reason">Audit error: [Errno 11001] getaddrinfo failed</div>
+        </div>
+        
+        </div>
+    </body>
+    </html>
+    
