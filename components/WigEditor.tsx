@@ -387,24 +387,24 @@ export default function WigEditor() {
   };
 
   return (
-    <div className="w-full h-screen flex flex-col bg-neutral-900 text-white font-sans overflow-hidden">
+    <div className="w-full bg-neutral-900 text-white font-sans lg:h-dvh lg:flex lg:flex-col lg:overflow-hidden">
       {/* ── Шапка ── */}
-      <header className="shrink-0 px-4 py-2 border-b border-neutral-800 flex items-center justify-between bg-neutral-900/90 backdrop-blur z-50">
+      <header className="shrink-0 px-4 py-2 border-b border-neutral-800 flex items-center justify-between bg-neutral-900/90 backdrop-blur z-50 sticky top-0 lg:static">
         <h1 className="text-lg font-bold tracking-tight bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">HairStudio Pro</h1>
         <div className="text-xs text-neutral-500">Виртуальная примерка причёсок</div>
       </header>
 
       {/* ── Основной layout ── */}
-      <div className="flex-1 flex flex-col lg:flex-row gap-0 overflow-hidden">
+      <div className="flex flex-col lg:flex-row lg:flex-1 lg:overflow-hidden">
 
         {/* ── Левая колонка ── */}
-        <div className="flex-1 flex flex-col gap-2 p-3 overflow-y-auto min-w-0">
+        <div className="flex flex-col gap-2 p-3 lg:flex-1 lg:min-w-0 lg:overflow-y-auto">
 
           {/* Область фото / камеры */}
           <div
             ref={containerRef}
             className="relative w-full rounded-2xl overflow-hidden bg-neutral-800 border border-neutral-700/50 select-none shrink-0"
-            style={{ height: '400px' }}
+            style={stream ? { aspectRatio: '16/9' } : { height: '400px' }}
             onWheel={handleWheel}
           >
             {userImage ? (
@@ -575,7 +575,7 @@ export default function WigEditor() {
         </div>
 
         {/* ── Правая колонка: галерея ── */}
-        <div className="w-full lg:w-80 xl:w-96 flex flex-col border-t lg:border-t-0 lg:border-l border-neutral-800 bg-neutral-900/50">
+        <div className="w-full lg:w-80 xl:w-96 flex flex-col border-t lg:border-t-0 lg:border-l border-neutral-800 bg-neutral-900/50 lg:overflow-hidden">
           <div className="p-3 border-b border-neutral-800 shrink-0 flex flex-col gap-2">
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-bold">Причёски</h3>
@@ -612,7 +612,7 @@ export default function WigEditor() {
           </div>
 
           {/* Сетка париков */}
-          <div className="flex-1 overflow-y-auto p-2">
+          <div className="lg:flex-1 overflow-y-auto p-2" style={{ maxHeight: 'min(60vh, 600px)' }} >
             <div className="grid grid-cols-3 xl:grid-cols-4 gap-2">
               {AVAILABLE_WIGS
                 .filter(w =>
