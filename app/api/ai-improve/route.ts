@@ -58,7 +58,6 @@ Output only the final image with no text.`;
     contents: [{ role: 'user', parts }],
     generationConfig: {
       responseModalities: ['IMAGE', 'TEXT'],
-      responseMimeType: 'image/jpeg',
     },
   };
 
