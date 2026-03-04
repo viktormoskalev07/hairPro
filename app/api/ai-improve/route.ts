@@ -81,10 +81,12 @@ Output only the final image with no text.`;
   const candidates = data?.candidates ?? [];
   for (const candidate of candidates) {
     for (const part of candidate?.content?.parts ?? []) {
-      if (part.inline_data?.data) {
+      // REST API returns camelCase: inlineData.data / inlineData.mimeType
+      const img = part.inlineData ?? part.inline_data;
+      if (img?.data) {
         return NextResponse.json({
-          imageBase64: part.inline_data.data,
-          mimeType: part.inline_data.mime_type ?? 'image/jpeg',
+          imageBase64: img.data,
+          mimeType: img.mimeType ?? img.mime_type ?? 'image/png',
         });
       }
     }
